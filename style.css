@@ -1,79 +1,339 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =======================
+   REBYGG – NYTT TEMA (LOGO-PALETT)
+   Beige/sand + blågrå
+   ======================= */
+
+:root{
+  /* Hovedpalett (fra logo) */
+  --sand-50:  #f6f0e9;
+  --sand-100: #eee3d6;
+  --sand-200: #e3d2bf;
+  --sand-300: #d6bda1;
+
+  --slate-50:  #f3f6f9;
+  --slate-100: #e7edf3;
+  --slate-200: #cfd9e3;
+  --slate-300: #aebdcd;
+  --slate-500: #7f93a8;
+  --slate-700: #4f6378;
+  --slate-900: #223241;
+
+  /* Brukes i UI */
+  --bg:        #ffffff;
+  --surface:   var(--slate-50);
+  --surface-2: var(--sand-50);
+
+  --text:      var(--slate-900);
+  --muted:     var(--slate-700);
+
+  --accent:    var(--sand-300);   /* “sand” CTA */
+  --accent-2:  var(--slate-500);  /* blågrå */
+  --border:    rgba(34,50,65,0.10);
+
+  --shadow:    0 14px 35px rgba(34,50,65,0.10);
+  --shadow-sm: 0 10px 25px rgba(34,50,65,0.08);
+
+  --radius:    16px;
+  --radius-sm: 12px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
+html{
+  scroll-behavior: smooth;
 }
 
-header {
-    background: #111;
-    color: white;
-    padding: 20px 0;
+body{
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container{
+  width: 80%;
+  margin: auto;
 }
 
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
+/* ---------------- HEADER ---------------- */
+
+header{
+  background: rgba(255,255,255,0.86);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
-.hero {
-    background: #f4f4f4;
-    padding: 100px 0;
-    text-align: center;
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
 }
 
-.hero h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
+/* Logo-område (tekst + bilde) */
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  letter-spacing: 0.2px;
 }
 
-.hero button {
-    padding: 10px 20px;
-    background: orange;
-    border: none;
-    cursor: pointer;
+/* Selve logo-bildet (øverst venstre) */
+.logo-img {
+    height: 55px;
+    width: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #eee3d6; /* sand-farge fra paletten */
 }
 
-.section {
-    padding: 80px 0;
+/* Hvis du fortsatt vil vise firmatekst ved siden av logoen */
+.logo-text{
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.light {
-    background: #f9f9f9;
+nav a{
+  color: var(--slate-700);
+  margin-left: 18px;
+  text-decoration: none;
+  transition: 0.2s ease;
+  font-weight: 600;
 }
 
-.cards {
-    display: flex;
-    gap: 20px;
+nav a:hover{
+  color: var(--slate-900);
+  opacity: 0.95;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero{
+  background: linear-gradient(180deg, var(--sand-50), var(--slate-50));
+  padding: 110px 0;
+  text-align: center;
+}
+
+.hero h1{
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--slate-900);
+}
+
+.hero p{
+  color: var(--muted);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero button{
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: var(--accent);
+  color: var(--slate-900);
+  border: 1px solid rgba(0,0,0,0.04);
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: 0.2s ease;
+  box-shadow: 0 10px 22px rgba(214,189,161,0.35);
+}
+
+.hero button:hover{
+  transform: translateY(-2px);
+  filter: brightness(0.98);
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.section{
+  padding: 90px 0;
+}
+
+.section h2{
+  font-size: 32px;
+  margin-bottom: 14px;
+  color: var(--slate-900);
+}
+
+.section p{
+  color: var(--muted);
+}
+
+.light{
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------------- “HVORDAN VI JOBBER” CARDS ---------------- */
+
+.cards{
+  display: flex;
+  gap: 22px;
+  margin-top: 38px;
+}
+
+.card{
+  background: #fff;
+  padding: 32px;
+  flex: 1;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: 0.2s ease;
+}
+
+.card h3{
+  color: var(--slate-900);
+  margin-bottom: 10px;
+  letter-spacing: 0.4px;
+}
+
+.card p{
+  color: var(--muted);
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+/* ---------------- TEAM SECTION ---------------- */
+
+.team{
+  padding: 110px 0;
+  background: var(--surface-2);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.team h2{
+  margin-bottom: 60px;
+  font-size: 36px;
+  color: var(--slate-900);
+}
+
+.team-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.team-card{
+  background: #fff;
+  padding: 42px 22px;
+  border-radius: 18px;
+  width: 300px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: 0.25s ease;
+}
+
+.team-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.team-card img{
+  width: 180px;
+  height: 180px;
+  border-radius: 35%;
+  object-fit: cover;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+  border: 6px solid var(--sand-100);
+}
+
+.team-card h3{
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--slate-900);
+}
+
+.team-card p{
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer{
+  background: var(--slate-900);
+  color: #fff;
+  text-align: center;
+  padding: 22px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 900px){
+  .cards{
+    flex-direction: column;
+  }
+
+  .hero h1{
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 650px){
+  .container{
+    width: 90%;
+  }
+
+  header .container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav{
+    width: 100%;
+  }
+
+  nav a{
+    margin-left: 0;
+    margin-right: 14px;
+    display: inline-block;
+    padding: 6px 0;
+  }
+
+  .team-card{
+    width: 100%;
+  }
+}
+
+/* ---------------- VIDEO SECTION ---------------- */
+
+.video-wrapper {
     margin-top: 40px;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(34,50,65,0.15);
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    flex: 1;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 20px;
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }

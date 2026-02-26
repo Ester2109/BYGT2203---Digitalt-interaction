@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ditt Firma</title>
+    <title>ReBygg</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h2 class="logo">DittFirma</h2>
+            
+            <!-- LOGO -->
+            <div class="logo">
+                <img src="logo.png" alt="ReBygg logo" class="logo-img">
+                <span class="logo-text">ReBygg</span>
+            </div>
+
             <nav>
                 <a href="#about">Om oss</a>
                 <a href="#service">Tjeneste</a>
@@ -22,26 +28,43 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Vi utvikler digitale tvillinger smartere</h1>
-            <p>Innovativ bruk av VDC, BIM og KI for fremtidens byggeprosjekter.</p>
+            <h1>Fra overskudd til ressurs</h1>
+            <p>ReBygg gir deg full oversikt over materialene – og nye muligheter i det som ellers går til spill</p>
             <br>
-            <button>Les mer</button>
+            <button id="knapp">Les mer</button>
         </div>
     </section>
 
     <section id="about" class="section">
         <div class="container">
             <h2>Hvem er vi?</h2>
-            <p>Vi er et tverrfaglig konsulentfirma som kombinerer ingeniørfaglig kompetanse med digital innovasjon.</p>
+            <p>ReBygg er en digital plattform som gjør det enklere for byggebransjen å redusere svinn og øke gjenbruk av materialer. Vi utvikler en digital tvilling av byggeplassens overskuddsmaterialer og samler dem i en strukturert materialbank.
+
+Gjennom vårt system kan entreprenører og aktører registrere, søke opp og reservere tilgjengelige materialer i sanntid. Dette gir bedre oversikt, lavere kostnader og mindre avfall.
+
+ReBygg kombinerer teknologi og bærekraft for å bidra til en mer sirkulær og effektiv byggebransje.</p>
         </div>
     </section>
 
     <section id="service" class="section light">
-        <div class="container">
-            <h2>Vår tjeneste</h2>
-            <p>Vi utvikler digitale tvillinger av bygg for bedre beslutningsgrunnlag, effektiv prosjektstyring og smartere drift.</p>
+    <div class="container">
+        <h2>Vår tjeneste</h2>
+        <p>
+            I videoen under får du en kort introduksjon til hvordan ReBygg fungerer i praksis. 
+            Vi viser hvordan overskuddsmaterialer registreres, lagres og gjøres tilgjengelige gjennom vår digitale materialbank – og hvordan dette bidrar til mindre svinn og en mer bærekraftig byggeprosess.
+        </p>
+
+        <!-- VIDEO CONTAINER -->
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="ReBygg presentasjon"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="process" class="section">
         <div class="container">
@@ -66,13 +89,60 @@
     <section id="contact" class="section light">
         <div class="container">
             <h2>Kontakt oss</h2>
-            <p>Email: kontakt@dittfirma.no</p>
+            <p>Email: kontakt@rebygg.no</p>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team">
+        <div class="container">
+            <h2>Teamet vårt</h2>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <img src="bilder/person1.jpg" alt="Tove Marie Stepaschko">
+                    <h3>Tove Marie Stepaschko</h3>
+                    <p>Administrerende Direktør</p>
+                    <p>Kontakt: tove@rebygg.no</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="bilder/person2.jpg" alt="Remi André Stølen">
+                    <h3>Remi André Stølen</h3>
+                    <p>Operasjonsleder</p>
+                    <p>Kontakt: remi@rebygg.no</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="bilder/person3.jpg" alt="Kristian Østmoløkken">
+                    <h3>Kristian Østmoløkken</h3>
+                    <p>Salgssjef</p>
+                    <p>Kontakt: kristian@rebygg.no</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="bilder/person4.jpg" alt="Petter Liabakk Eriksen">
+                    <h3>Petter Liabakk Eriksen</h3>
+                    <p>Produksjonssjef</p>
+                    <p>Kontakt: petter@rebygg.no</p>
+                </div>
+
+                <div class="team-card">
+                    <img src="bilder/person5.jpg" alt="Ester Halvorsen">
+                    <h3>Ester Halvorsen</h3>
+                    <p>IT-spesialist</p>
+                    <p>Kontakt: ester@rebygg.no</p>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2025 DittFirma – Digitalt Samspill</p>
+        <p>© 2026 ReBygg – Digitalt Samspill</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
