@@ -12,17 +12,18 @@
         <div class="container">
             
             <!-- LOGO -->
-            <div class="logo">
+            <a href="#" class="logo">
                 <img src="logo.png" alt="ReBygg logo" class="logo-img">
                 <span class="logo-text">ReBygg</span>
-            </div>
+            </a>
 
             <nav>
                 <a href="#about">Om oss</a>
                 <a href="#service">Tjeneste</a>
                 <a href="#process">Hvordan vi jobber</a>
-                <a href="#contact">Kontakt</a>
+                <a href="#app">ReBygg-appen</a>
                 <a href="#team">Vårt team</a>
+                <a href="#contact">Kontakt</a>
             </nav>
         </div>
     </header>
@@ -116,33 +117,75 @@
 </section>
 
     <section id="process" class="section">
-        <div class="container">
-            <h2>Hvordan vi jobber</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>WHY</h3>
-                    <p>Vi ønsker å forbedre byggeprosesser gjennom smartere bruk av teknologi.</p>
+    <div class="container">
+        <h2>Hvordan vi jobber</h2>
+
+        <div class="cards">
+
+            <!-- WHY -->
+            <div class="card process-card">
+                <div class="card-img">
+                    <img src="undersokelse.png" alt="Bærekraft og materialsvinn">
                 </div>
-                <div class="card">
-                    <h3>HOW</h3>
-                    <p>Gjennom VDC, BIM og KI-basert analyse utvikler vi effektive løsninger.</p>
-                </div>
-                <div class="card">
-                    <h3>WHAT</h3>
-                    <p>En digital tvilling som gir full kontroll og bedre samspill i prosjekter.</p>
-                </div>
+                <h3>HVORFOR</h3>
+                <p>
+                    Byggebransjen står for store mengder avfall, selv om mye av materialene er fullt brukbare.
+Gjennom dialog med næringslivet ser vi et tydelig behov for bedre oversikt.
+ReBygg skal bidra til økt bærekraft og smartere ressursutnyttelse.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="section light">
-        <div class="container">
-            <h2>Kontakt oss</h2>
-            <p>Email: kontakt@rebygg.no</p>
-        </div>
-    </section>
+            <!-- HOW -->
+            <div class="card process-card">
+                <div class="card-img">
+                    <img src="revit.jpg" alt="Revit og BIM modell">
+                </div>
+                <h3>HVORDAN</h3>
+                <p>
+                    Løsningen er utviklet basert på innsikt fra byggebransjen gjennom spørreundersøkelser.
+                    Vi har brukt BIM og Revit for å modellere lagersystemet,
+                    og tatt i bruk digital tvilling for å skape bedre oversikt og samspill.
+                </p>
+            </div>
 
-    <!-- TEAM SECTION -->
+            <!-- WHAT -->
+            <div class="card process-card">
+                <div class="card-img">
+                    <img src="litenapp.png" alt="ReBygg app">
+                </div>
+                <h3>HVA</h3>
+                <p>
+                    ReBygg er en app som gir full oversikt over overskuddsmaterialer på byggeplassen.
+                    Brukere kan registrere, finne og dele materialer, noe som reduserer svinn og kostnader.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="app" class="section app-section">
+    <div class="container app-layout">
+
+        <div class="app-text">
+            <p class="app-kicker">Alt samlet på mobilen</p>
+            <h2>ReBygg-appen</h2>
+            <p>
+                Med ReBygg-appen får du rask tilgang til materialoversikt, registrering og oppfølging
+                direkte fra byggeplassen. Appen gjør det enklere å oppdage overskuddsmaterialer,
+                dele ressurser og redusere svinn i sanntid.
+            </p>
+        </div>
+
+        <div class="app-image">
+            <img src="app.png" alt="Visning av ReBygg-appen">
+        </div>
+
+    </div>
+</section>
+
+
+  <!-- TEAM SECTION -->
      <section id="team" class="team">
         <div class="container">
             <h2>Teamet vårt</h2>
@@ -150,21 +193,21 @@
             <div class="team-grid">
 
                 <div class="team-card">
-                    <img src="profile-icon.jpg" alt="Tove Marie Stepaschko">
+                    <img src="tove.jpg" alt="Tove Marie Stepaschko">
                     <h3>Tove Marie Stepaschko</h3>
                     <p>Administrerende Direktør</p>
                     <p>Kontakt: tove@rebygg.no</p>
                 </div>
 
                 <div class="team-card">
-                    <img src="profile-icon.jpg" alt="Remi André Stølen">
+                    <img src="remi.jpg" alt="Remi André Stølen">
                     <h3>Remi André Stølen</h3>
                     <p>Operasjonsleder</p>
                     <p>Kontakt: remi@rebygg.no</p>
                 </div>
 
                 <div class="team-card">
-                    <img src="profile-icon.jpg" alt="Kristian Østmoløkken">
+                    <img src="kristian.jpg" alt="Kristian Østmoløkken">
                     <h3>Kristian Østmoløkken</h3>
                     <p>Salgssjef</p>
                     <p>Kontakt: kristian@rebygg.no</p>
@@ -178,7 +221,7 @@
                 </div>
 
                 <div class="team-card">
-                    <img src="profile-icon.jpg" alt="Ester Halvorsen">
+                    <img src="ester.jpg" alt="Ester Halvorsen">
                     <h3>Ester Halvorsen</h3>
                     <p>IT-spesialist</p>
                     <p>Kontakt: ester@rebygg.no</p>
@@ -188,9 +231,21 @@
         </div>
     </section>
 
+    <section id="contact" class="section light">
+        <div class="container">
+            <h2>Kontakt oss</h2>
+            <p>Email: kontakt@rebygg.no</p>
+        </div>
+    </section>
+
+  
+
     <footer>
         <p>© 2026 ReBygg – Digitalt Samspill</p>
     </footer>
+
+
+<button id="toTopBtn" class="to-top-btn" aria-label="Til toppen">↑</button>
 
     <script src="script.js"></script>
 </body>

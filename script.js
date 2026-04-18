@@ -106,3 +106,22 @@ window.addEventListener("resize", function () {
 /* Start */
 updateCarousel();
 startCarousel();
+
+const toTopBtn = document.getElementById("toTopBtn");
+
+// vis knapp når man scroller ned
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    toTopBtn.style.display = "flex";
+  } else {
+    toTopBtn.style.display = "none";
+  }
+});
+
+// scroll til toppen når man klikker
+toTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});

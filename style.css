@@ -516,3 +516,168 @@ footer{
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ---------------- REBYGG-APPEN ---------------- */
+
+.app-section{
+  background: linear-gradient(180deg, #fff, var(--surface));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.app-text h2{
+  font-size: 38px;
+  margin-bottom: 14px;
+  color: var(--slate-900);
+}
+
+.app-kicker{
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--slate-700);
+  background: var(--sand-100);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.app-text p{
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.app-image{
+  display: flex;
+  justify-content: center;
+}
+
+.app-image img{
+  width: 100%;
+  max-width: 1500px;
+  border-radius: 26px;
+  box-shadow: 0 20px 45px rgba(34,50,65,0.16);
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 950px){
+  .app-layout{
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .app-text p{
+    margin: 0 auto;
+  }
+
+  .app-image img{
+    max-width: 320px;
+  }
+}
+
+/* ---------------- HEADER BUTTON ---------------- */
+
+.nav-button{
+  margin-left: 18px;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: var(--slate-900);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 18px rgba(214,189,161,0.35);
+}
+
+.nav-button:hover{
+  transform: translateY(-2px);
+  filter: brightness(0.97);
+}
+
+.nav-button{
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* ---------------- PROCESS CARDS MED BILDE ---------------- */
+
+.process-card{
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Bilde øverst */
+.card-img{
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tekst */
+.process-card h3{
+  padding: 20px 24px 0;
+}
+
+.process-card p{
+  padding: 10px 24px 24px;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  letter-spacing: 0.2px;
+  text-decoration: none; /* 🔥 fjerner understrek */
+}
+
+/* ---------------- SCROLL TO TOP BUTTON ---------------- */
+
+.to-top-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--slate-900);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(34,50,65,0.2);
+  display: none; /* skjult først */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.to-top-btn:hover{
+  transform: translateY(-3px);
+  filter: brightness(0.95);
+}
