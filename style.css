@@ -664,13 +664,13 @@ footer{
   height: 50px;
   border-radius: 50%;
   border: none;
-  background: var(--accent);
+  background: #d6bda1; /* 🔥 din farge */
   color: var(--slate-900);
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(34,50,65,0.2);
-  display: none; /* skjult først */
+  display: none;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
@@ -680,4 +680,153 @@ footer{
 .to-top-btn:hover{
   transform: translateY(-3px);
   filter: brightness(0.95);
+}
+
+/* ---------------- CHAT BUTTON ---------------- */
+
+.chat-btn{
+  position: fixed;
+  bottom: 30px;
+  right: 100px; /* litt til venstre for pilen */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent); /* samme som pil */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(34,50,65,0.2);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.chat-btn img{
+  width: 50px;
+  height: 50px;
+}
+
+.chat-btn:hover{
+  transform: translateY(-3px);
+  filter: brightness(0.95);
+}
+
+
+/* ---------------- CHAT BOX ---------------- */
+.chat-box{
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 22px 45px rgba(34,50,65,0.18);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  z-index: 1000;
+
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chat-box.open{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Header */
+.chat-header{
+  background: linear-gradient(180deg, var(--sand-100), var(--accent));
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 14px; /* litt mindre */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--slate-900);
+  border-bottom: 1px solid rgba(34,50,65,0.08);
+}
+
+.chat-header button{
+  background: rgba(255,255,255,0.35);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--slate-900);
+  transition: all 0.2s ease;
+}
+
+.chat-header button:hover{
+  background: rgba(255,255,255,0.6);
+  transform: scale(1.05);
+}
+
+/* Meldinger */
+.chat-messages{
+  padding: 14px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  font-size: 13px; /* 🔥 mindre tekst */
+  line-height: 1.4;
+}
+
+.bot-message{
+  background: var(--surface);
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  color: var(--slate-900);
+  border: 1px solid rgba(34,50,65,0.06);
+  box-shadow: 0 4px 10px rgba(34,50,65,0.04);
+  font-size: 13px;
+}
+
+/* Knapper */
+.chat-options{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(180deg, #fff, var(--sand-50));
+  border-top: 1px solid rgba(34,50,65,0.06);
+}
+
+.chat-option{
+  background: #fff;
+  border: 1px solid rgba(34,50,65,0.08);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px; /* 🔥 mindre tekst */
+  color: var(--slate-900);
+  text-align: left;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 8px rgba(34,50,65,0.04);
+}
+
+.chat-option:hover{
+  background: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(34,50,65,0.08);
+}
+
+.user-message{
+  background: var(--accent);
+  color: var(--slate-900);
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  max-width: 85%;
+  width: fit-content;
+  box-shadow: 0 4px 10px rgba(34,50,65,0.04);
+  font-size: 13px;
 }
