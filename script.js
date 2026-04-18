@@ -447,5 +447,50 @@ if (chatBtn && chatBox && closeChat) {
   });
 }
 
-// Start med å koble knappene
+// ======================
+// KOBLE CHAT-KNAPPER
+// ======================
 attachOptionListeners();
+
+
+// ======================
+// CUSTOM ALERT
+// ======================
+
+function showAlert(message){
+  const alertBox = document.getElementById("customAlert");
+  const alertText = document.getElementById("alertText");
+
+  if (!alertBox || !alertText) return;
+
+  alertText.textContent = message;
+  alertBox.classList.add("active");
+}
+
+function closeAlert(){
+  const alertBox = document.getElementById("customAlert");
+  if (alertBox) {
+    alertBox.classList.remove("active");
+  }
+}
+
+
+// ======================
+// KONTAKTSKJEMA
+// ======================
+
+const form = document.getElementById("contactForm");
+
+if (form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // 🔥 vis pen alert
+    showAlert(
+      "Takk for din henvendelse! Du vil få svar innen 2 virkedager."
+    );
+
+    // 🔥 reset skjema
+    form.reset();
+  });
+}

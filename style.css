@@ -830,3 +830,218 @@ footer{
   box-shadow: 0 4px 10px rgba(34,50,65,0.04);
   font-size: 13px;
 }
+
+
+.contact-form{
+  max-width: 600px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.contact-form textarea{
+  resize: none;
+}
+
+.contact-form button{
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: var(--slate-900);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.contact-form button:hover{
+  transform: translateY(-1px);
+  filter: brightness(0.97);
+}
+
+.form-success{
+  display: none;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--slate-700);
+}
+/* =======================
+   KONTAKTSKJEMA (MIDTSTILT)
+   ======================= */
+
+.contact-section{
+  padding: 120px 0;
+  background: linear-gradient(180deg, #fff, var(--surface));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center; /* 🔥 viktig */
+}
+
+.contact-container{
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 🔥 sentrerer alt */
+}
+
+.contact-header{
+  margin-bottom: 30px;
+}
+
+.contact-header h2{
+  font-size: 38px;
+  margin-bottom: 14px;
+}
+
+.contact-header p{
+  max-width: 600px;
+  margin: 0 auto; /* 🔥 midtstilt tekst */
+  color: var(--muted);
+}
+
+/* FORM */
+.contact-form{
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 35px rgba(34,50,65,0.08);
+  align-items: center; /* 🔥 sentrerer innhold */
+}
+
+/* input rad */
+.form-row{
+  width: 100%;
+  display: flex;
+  gap: 14px;
+}
+
+.form-row input,
+.form-row select{
+  flex: 1;
+}
+
+/* inputs */
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  font-size: 15px;
+  text-align: center; /* 🔥 midtstilt tekst i felt */
+}
+
+/* tekstboks */
+.contact-form textarea{
+  min-height: 160px;
+  resize: none;
+  text-align: left; /* 🔥 behold vanlig skriving her */
+}
+
+/* knapp */
+.contact-form button{
+  width: 100%;
+  max-width: 300px; /* 🔥 pen knapp midtstilt */
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent);
+  color: var(--slate-900);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-form button:hover{
+  transform: translateY(-2px);
+}
+
+/* mobil */
+@media (max-width: 700px){
+  .form-row{
+    flex-direction: column;
+  }
+}
+
+/* =======================
+   CUSTOM ALERT
+   ======================= */
+
+.custom-alert{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.custom-alert.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.alert-box{
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 20px 45px rgba(34,50,65,0.2);
+  border: 1px solid var(--border);
+
+  transform: scale(0.9);
+  transition: 0.3s ease;
+}
+
+.custom-alert.active .alert-box{
+  transform: scale(1);
+}
+
+.alert-box p{
+  margin-bottom: 20px;
+  color: var(--slate-900);
+}
+
+.alert-box button{
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: var(--slate-900);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.alert-box button:hover{
+  transform: translateY(-2px);
+}

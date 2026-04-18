@@ -231,12 +231,52 @@ ReBygg skal bidra til økt bærekraft og smartere ressursutnyttelse.
         </div>
     </section>
 
-    <section id="contact" class="section light">
-        <div class="container">
-            <h2>Kontakt oss</h2>
-            <p>Email: kontakt@rebygg.no</p>
-        </div>
-    </section>
+ <section id="contact" class="section contact-section">
+  <div class="container contact-container">
+
+    <div class="contact-header">
+      <h2>Kontakt oss</h2>
+      <p>
+        Har du en generell henvendelse? <br>
+        Du kan kontakte oss direkte på e-post kontakt@rebygg.no, eller benytte kontaktskjemaet under
+      </p>
+    </div>
+
+    <form id="contactForm" class="contact-form">
+
+      <div class="form-row">
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="Din e-postadresse" 
+          required
+        >
+
+        <select id="subject" required>
+            <option value="" disabled selected>Velg tema</option>
+            <option>Samarbeid og partnerskap</option>
+            <option>Prosjekt og gjennomføring</option>
+            <option>Priser og tilbud</option>
+            <option>Lager og materialflyt</option>
+            <option>Digitale løsninger og appen</option>
+            <option>Annet</option>
+        </select>
+      </div>
+
+      <textarea 
+        id="message" 
+        rows="6" 
+        placeholder="Skriv meldingen din her..."
+        required
+      ></textarea>
+
+      <button type="submit">Send henvendelse</button>
+
+    </form>
+
+  </div>
+</section>
+</section>
 
   
 
@@ -268,6 +308,13 @@ ReBygg skal bidra til økt bærekraft og smartere ressursutnyttelse.
     <button class="chat-option" data-question="Kontakt oss">Kontakt oss</button>
 </div>
 
+</div>
+
+<div id="customAlert" class="custom-alert">
+  <div class="alert-box">
+    <p id="alertText"></p>
+    <button onclick="closeAlert()">OK</button>
+  </div>
 </div>
 
 <button id="toTopBtn" class="to-top-btn" aria-label="Til toppen">↑</button>
