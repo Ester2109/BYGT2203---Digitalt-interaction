@@ -670,7 +670,7 @@ footer{
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(34,50,65,0.2);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
