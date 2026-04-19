@@ -127,7 +127,6 @@ const chatBox = document.getElementById("chatBox");
 const closeChat = document.getElementById("closeChat");
 const chatMessages = document.getElementById("chatMessages");
 const chatOptions = document.getElementById("chatOptions");
-const botMessage = document.getElementById("botMessage");
 
 const welcomeText =
   "Hei! Jeg er ReBygg-botten, din personlige KI-assistent. Hva kan jeg hjelpe deg med?";
@@ -139,12 +138,12 @@ const allQuestions = [
   "Hva er ReBygg?",
   "Hvordan fungerer appen?",
   "Hvorfor er dette bærekraftig?",
-  "Kontakt oss"
+  "Jeg ønsker å kontakte dere"
 ];
 
 const answers = {
   "Hva er ReBygg?": [
-    "ReBygg er en digital plattform utviklet for å gjøre byggebransjen mer bærekraftig gjennom smartere bruk av materialer",
+    "ReBygg er en digital plattform utviklet for å gjøre byggebransjen mer bærekraftig gjennom smartere bruk av materialer.",
     "Noe annet du lurer på?"
   ],
 
@@ -158,7 +157,7 @@ const answers = {
     "Noe annet du lurer på?"
   ],
 
-  "Kontakt oss": [
+  "Jeg ønsker å kontakte dere": [
     "Selvfølgelig! Hva ønsker du å kontakte oss om?",
     "Velg et alternativ under:"
   ]
@@ -176,27 +175,27 @@ const contactOptions = [
 const contactAnswers = {
   "Samarbeid og partnerskap": [
     "Du kan kontakte vår Administrerende Direktør:",
-    "Tove Marie Stepaschko\nE-post: tove@rebygg.no"
+    "Tove Marie Stepaschko på \nE-post: tove@rebygg.no"
   ],
 
   "Prosjekt og gjennomføring": [
     "Ta kontakt med vår Operasjonsleder:",
-    "Remi André Stølen\nE-post: remi@rebygg.no"
+    "Remi André Stølen på \nE-post: remi@rebygg.no"
   ],
 
   "Priser og tilbud": [
     "Vår Salgssjef hjelper deg gjerne:",
-    "Kristian Østmoløkken\nE-post: kristian@rebygg.no"
+    "Kristian Østmoløkken på \nE-post: kristian@rebygg.no"
   ],
 
   "Lager og materialflyt": [
     "Ta kontakt med vår Produksjonssjef:",
-    "Petter Liabakk Eriksen\nE-post: petter@rebygg.no"
+    "Petter Liabakk Eriksen på \nE-post: petter@rebygg.no"
   ],
 
   "Digitale løsninger og appen": [
     "Vår IT-spesialist kan hjelpe deg:",
-    "Ester Halvorsen\nE-post: ester@rebygg.no"
+    "Ester Halvorsen på \nE-post: ester@rebygg.no"
   ],
 
   "Annet": [
@@ -312,7 +311,7 @@ function handleQuestionClick(question) {
 
         typeMessage(botReply2, responseList[1], 30, () => {
           setTimeout(() => {
-            if (question === "Kontakt oss") {
+            if (question === "Jeg ønsker å kontakte dere") {
               renderContactOptions();
             } else {
               renderOptions(question);
@@ -369,6 +368,15 @@ function handleContactClick(contact) {
   }, 500);
 }
 
+function resetChat() {
+  if (!chatMessages || !chatOptions) return;
+
+  chatMessages.innerHTML = '<div class="bot-message" id="botMessage"></div>';
+  renderOptions();
+  hasTypedWelcome = false;
+}
+
+
 // Håndterer avslutt-knappen
 function handleDoneClick() {
   if (!chatMessages || !chatOptions || !chatBox) return;
@@ -392,6 +400,7 @@ function handleDoneClick() {
       () => {
         setTimeout(() => {
           chatBox.classList.remove("open");
+          resetChat();
         }, 1200);
       }
     );
@@ -425,9 +434,11 @@ if (chatBtn && chatBox && closeChat) {
     chatBox.classList.toggle("open");
 
     if (chatBox.classList.contains("open") && !hasTypedWelcome) {
-      if (botMessage) {
+      const currentBotMessage = document.getElementById("botMessage");
+
+      if (currentBotMessage) {
         setTimeout(() => {
-          typeMessage(botMessage, welcomeText, 40);
+          typeMessage(currentBotMessage, welcomeText, 40);
         }, 500);
       }
 
@@ -437,6 +448,7 @@ if (chatBtn && chatBox && closeChat) {
 
   closeChat.addEventListener("click", () => {
     chatBox.classList.remove("open");
+    resetChat();
   });
 }
 
