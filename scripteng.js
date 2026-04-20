@@ -16,17 +16,17 @@ const slides = Array.from(document.querySelectorAll(".carousel-slide"));
 let currentIndex = 0;
 let autoSlide;
 
-/* Hvor mange bilder som skal vises */
+/* Number of images to show */
 function getSlidesPerView() {
   return window.innerWidth <= 768 ? 1 : 3;
 }
 
-/* Avstand mellom bildene */
+/* Space between images */
 function getGap() {
   return window.innerWidth <= 768 ? 0 : 20;
 }
 
-/* Oppdaterer karusellen */
+/* Updates the carousel */
 function updateCarousel() {
   if (!track || slides.length === 0) return;
 
@@ -44,7 +44,6 @@ function updateCarousel() {
     return;
   }
 
-  // Pass på at currentIndex ikke går for langt
   if (currentIndex > slides.length - slidesPerView) {
     currentIndex = 0;
   }
@@ -60,7 +59,7 @@ function updateCarousel() {
   track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
 
-/* Neste steg i karusellen */
+/* Next step in the carousel */
 function nextSlide() {
   if (slides.length === 0) return;
 
@@ -79,26 +78,26 @@ function nextSlide() {
   updateCarousel();
 }
 
-/* Start auto-rotasjon */
+/* Start auto rotation */
 function startCarousel() {
   stopCarousel();
   autoSlide = setInterval(nextSlide, 4000);
 }
 
-/* Stopp auto-rotasjon */
+/* Stop auto rotation */
 function stopCarousel() {
   if (autoSlide) {
     clearInterval(autoSlide);
   }
 }
 
-/* Pause ved hover */
+/* Pause on hover */
 if (track) {
   track.addEventListener("mouseenter", stopCarousel);
   track.addEventListener("mouseleave", startCarousel);
 }
 
-/* Oppdater ved resize */
+/* Update on resize */
 window.addEventListener("resize", function () {
   updateCarousel();
 });
@@ -109,15 +108,14 @@ startCarousel();
 
 const toTopBtn = document.getElementById("toTopBtn");
 
-
-
-// scroll til toppen når man klikker
+// Scroll to top when clicked
 toTopBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
 });
+
 // ======================
 // CHATBOT
 // ======================
@@ -129,82 +127,82 @@ const chatMessages = document.getElementById("chatMessages");
 const chatOptions = document.getElementById("chatOptions");
 
 const welcomeText =
-  "Hei! Jeg er ReBygg-botten, din personlige KI-assistent. Hva kan jeg hjelpe deg med?";
+  "Hi! I am the ReBygg Bot, your personal AI assistant. How can I help you?";
 
-const doneOption = "Jeg er ferdig";
+const doneOption = "I'm done";
 let hasTypedWelcome = false;
 
 const allQuestions = [
-  "Hva er ReBygg?",
-  "Hvordan fungerer appen?",
-  "Hvorfor er dette bærekraftig?",
-  "Jeg ønsker å kontakte dere"
+  "What is ReBygg?",
+  "How does the app work?",
+  "Why is this sustainable?",
+  "I would like to contact you"
 ];
 
 const answers = {
-  "Hva er ReBygg?": [
-    "ReBygg er en digital plattform utviklet for å gjøre byggebransjen mer bærekraftig gjennom smartere bruk av materialer.",
-    "Noe annet du lurer på?"
+  "What is ReBygg?": [
+    "ReBygg is a digital platform developed to make the construction industry more sustainable through smarter use of materials.",
+    "Is there anything else you would like to know?"
   ],
 
-  "Hvordan fungerer appen?": [
-    "I ReBygg-appen kan du registrere overskuddsmateriell med mål, materialtype og hyllenummer der det lagres. Deretter kan andre brukere enkelt hente materialet.",
-    "Noe annet du lurer på?"
+  "How does the app work?": [
+    "In the ReBygg app, you can register surplus materials with dimensions, material type, and shelf number where they are stored. Other users can then easily retrieve the material.",
+    "Is there anything else you would like to know?"
   ],
 
-  "Hvorfor er dette bærekraftig?": [
-    "ReBygg gjør det enklere å gjenbruke materialer som ellers ville blitt kastet. Dette reduserer avfall, sparer ressurser og bidrar til en mer sirkulær byggebransje.",
-    "Noe annet du lurer på?"
+  "Why is this sustainable?": [
+    "ReBygg makes it easier to reuse materials that would otherwise be thrown away. This reduces waste, saves resources, and contributes to a more circular construction industry.",
+    "Is there anything else you would like to know?"
   ],
 
-  "Jeg ønsker å kontakte dere": [
-    "Selvfølgelig! Hva ønsker du å kontakte oss om?",
-    "Velg et alternativ under:"
+  "I would like to contact you": [
+    "Of course! What would you like to contact us about?",
+    "Choose an option below:"
   ]
 };
 
 const contactOptions = [
-  "Samarbeid og partnerskap",
-  "Prosjekt og gjennomføring",
-  "Priser og tilbud",
-  "Lager og materialflyt",
-  "Digitale løsninger og appen",
-  "Annet"
+  "Collaboration and partnerships",
+  "Projects and execution",
+  "Prices and offers",
+  "Storage and material flow",
+  "Digital solutions and the app",
+  "Other"
 ];
 
 const contactAnswers = {
-  "Samarbeid og partnerskap": [
-    "Du kan kontakte vår Administrerende Direktør:",
-    "Tove Marie Stepaschko på \nE-post: tove@rebygg.no"
+  "Collaboration and partnerships": [
+    "You can contact our Chief Executive Officer:",
+    "Tove Marie Stepaschko at \nEmail: tove@rebygg.no"
   ],
 
-  "Prosjekt og gjennomføring": [
-    "Ta kontakt med vår Operasjonsleder:",
-    "Remi André Stølen på \nE-post: remi@rebygg.no"
+  "Projects and execution": [
+    "Please contact our Operations Manager:",
+    "Remi André Stølen at \nEmail: remi@rebygg.no"
   ],
 
-  "Priser og tilbud": [
-    "Vår Salgssjef hjelper deg gjerne:",
-    "Kristian Østmoløkken på \nE-post: kristian@rebygg.no"
+  "Prices and offers": [
+    "Our Sales Manager will be happy to help you:",
+    "Kristian Østmoløkken at \nEmail: kristian@rebygg.no"
   ],
 
-  "Lager og materialflyt": [
-    "Ta kontakt med vår Produksjonssjef:",
-    "Petter Liabakk Eriksen på \nE-post: petter@rebygg.no"
+  "Storage and material flow": [
+    "Please contact our Production Manager:",
+    "Petter Liabakk Eriksen at \nEmail: petter@rebygg.no"
   ],
 
-  "Digitale løsninger og appen": [
-    "Vår IT-spesialist kan hjelpe deg:",
-    "Ester Halvorsen på \nE-post: ester@rebygg.no"
+  "Digital solutions and the app": [
+    "Our IT Specialist can help you:",
+    "Ester Halvorsen at \nEmail: ester@rebygg.no"
   ],
 
-  "Annet": [
-    "For generelle henvendelser kan du kontakte oss på vårt sentralbord:",
-    "E-post: kontakt@rebygg.no"
+  "Other": [
+    "For general inquiries, you can contact us at our main email:",
+    "Email: kontakt@rebygg.no"
   ]
 };
 
-// Skriver tekst bokstav for bokstav
+// Writes text letter by letter
 function typeMessage(element, text, speed = 35, callback = null) {
   if (!element) return;
 
@@ -227,14 +225,14 @@ function typeMessage(element, text, speed = 35, callback = null) {
   typing();
 }
 
-// Lager en melding
+// Creates a message
 function createMessage(className) {
   const message = document.createElement("div");
   message.className = className;
   return message;
 }
 
-// Viser hovedknappene på nytt + avslutt-knappen
+// Shows the main buttons again + the finish button
 function renderOptions(excludeQuestion = null) {
   if (!chatOptions) return;
 
@@ -261,7 +259,7 @@ function renderOptions(excludeQuestion = null) {
   attachOptionListeners();
 }
 
-// Viser kontaktknappene + avslutt-knappen
+// Shows the contact buttons + the finish button
 function renderContactOptions() {
   if (!chatOptions) return;
 
@@ -284,7 +282,7 @@ function renderContactOptions() {
   attachOptionListeners();
 }
 
-// Håndterer vanlige spørsmål
+// Handles general questions
 function handleQuestionClick(question) {
   if (!chatMessages || !chatOptions) return;
 
@@ -311,7 +309,7 @@ function handleQuestionClick(question) {
 
         typeMessage(botReply2, responseList[1], 30, () => {
           setTimeout(() => {
-            if (question === "Jeg ønsker å kontakte dere") {
+            if (question === "I would like to contact you") {
               renderContactOptions();
             } else {
               renderOptions(question);
@@ -324,7 +322,7 @@ function handleQuestionClick(question) {
   }, 500);
 }
 
-// Håndterer kontaktvalg
+// Handles contact choices
 function handleContactClick(contact) {
   if (!chatMessages || !chatOptions) return;
 
@@ -355,7 +353,7 @@ function handleContactClick(contact) {
             chatMessages.appendChild(botReply3);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            typeMessage(botReply3, "Noe annet du lurer på?", 30, () => {
+            typeMessage(botReply3, "Is there anything else you would like to know?", 30, () => {
               setTimeout(() => {
                 renderOptions();
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -376,8 +374,7 @@ function resetChat() {
   hasTypedWelcome = false;
 }
 
-
-// Håndterer avslutt-knappen
+// Handles the finish button
 function handleDoneClick() {
   if (!chatMessages || !chatOptions || !chatBox) return;
 
@@ -395,7 +392,7 @@ function handleDoneClick() {
 
     typeMessage(
       botReply,
-      "Den er god. Ikke nøl med å ta kontakt igjen om det er noe du lurer på. Ha en fin dag!",
+      "Got it. Do not hesitate to contact us again if there is anything you are wondering about. Have a great day!",
       30,
       () => {
         setTimeout(() => {
@@ -407,7 +404,7 @@ function handleDoneClick() {
   }, 500);
 }
 
-// Knytter klikk til knappene
+// Connects clicks to the buttons
 function attachOptionListeners() {
   const optionButtons = document.querySelectorAll(".chat-option");
 
@@ -428,7 +425,7 @@ function attachOptionListeners() {
   });
 }
 
-// Åpne/lukke chat
+// Open/close chat
 if (chatBtn && chatBox && closeChat) {
   chatBtn.addEventListener("click", () => {
     chatBox.classList.toggle("open");
@@ -453,10 +450,9 @@ if (chatBtn && chatBox && closeChat) {
 }
 
 // ======================
-// KOBLE CHAT-KNAPPER
+// CONNECT CHAT BUTTONS
 // ======================
 attachOptionListeners();
-
 
 // ======================
 // CUSTOM ALERT
@@ -479,9 +475,8 @@ function closeAlert(){
   }
 }
 
-
 // ======================
-// KONTAKTSKJEMA
+// CONTACT FORM
 // ======================
 
 const form = document.getElementById("contactForm");
@@ -490,12 +485,10 @@ if (form) {
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    // 🔥 vis pen alert
     showAlert(
-      "Takk for din henvendelse! Du vil få svar innen 2 virkedager."
+      "Thank you for your inquiry! You will receive a reply within 2 business days."
     );
 
-    // 🔥 reset skjema
     form.reset();
   });
 }
@@ -503,30 +496,26 @@ if (form) {
 const selectedFlag = document.getElementById("selectedFlag");
 const langMenu = document.getElementById("langMenu");
 
-// åpne/lukke dropdown
+// Open/close dropdown
 selectedFlag.addEventListener("click", () => {
     langMenu.style.display = 
         langMenu.style.display === "flex" ? "none" : "flex";
 });
 
-// velge språk
+// Select language
 document.querySelectorAll(".lang-option").forEach(option => {
     option.addEventListener("click", () => {
         const lang = option.getAttribute("data-lang");
 
-        // bytt flagg
         selectedFlag.src = option.src;
 
-        // lukk meny
         langMenu.style.display = "none";
 
-        // HER kan du koble språkbytte senere
-        console.log("Valgt språk:", lang);
-        // setLanguage(lang);
+        console.log("Selected language:", lang);
     });
 });
 
-// lukk hvis man klikker utenfor
+// Close if clicking outside
 document.addEventListener("click", (e) => {
     if (!e.target.closest(".lang-dropdown")) {
         langMenu.style.display = "none";
