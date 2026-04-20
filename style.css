@@ -1068,9 +1068,13 @@ footer{
     background: white;
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding: 5px;
+    padding: 7px;
+
+    display: none;
     flex-direction: column;
-    gap: 5px;
+    align-items: center; /* 🔥 dette fikser midtstilling */
+    gap: 6px;
+
     z-index: 1000;
 }
 
@@ -1087,3 +1091,4 @@ footer{
     position: relative;
     top: 4px; /* juster denne */
 }
+
