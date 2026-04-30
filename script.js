@@ -205,22 +205,52 @@ const contactAnswers = {
 };
 
 // Skriver tekst bokstav for bokstav
+let activeTyping = null;
+
+// Skriver tekst bokstav for bokstav
 function typeMessage(element, text, speed = 35, callback = null) {
   if (!element) return;
 
+  // stopp eventuell tidligere typing
+  if (activeTyping) {
+    clearTimeout(activeTyping.timeout);
+    activeTyping = null;
+  }
+
   element.textContent = "";
   let i = 0;
+
+  activeTyping = {
+    element,
+    text,
+    timeout: null,
+    finish() {
+      clearTimeout(this.timeout);
+      element.textContent = text;
+
+      if (chatMessages) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      activeTyping = null;
+
+      if (callback) callback();
+    }
+  };
 
   function typing() {
     if (i < text.length) {
       element.textContent += text.charAt(i);
       i++;
+
       if (chatMessages) {
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
-      setTimeout(typing, speed);
-    } else if (callback) {
-      callback();
+
+      activeTyping.timeout = setTimeout(typing, speed);
+    } else {
+      activeTyping = null;
+      if (callback) callback();
     }
   }
 
@@ -286,6 +316,10 @@ function renderContactOptions() {
 
 // Håndterer vanlige spørsmål
 function handleQuestionClick(question) {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions) return;
 
   chatOptions.innerHTML = "";
@@ -326,6 +360,10 @@ function handleQuestionClick(question) {
 
 // Håndterer kontaktvalg
 function handleContactClick(contact) {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions) return;
 
   chatOptions.innerHTML = "";
@@ -379,6 +417,10 @@ function resetChat() {
 
 // Håndterer avslutt-knappen
 function handleDoneClick() {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions || !chatBox) return;
 
   chatOptions.innerHTML = "";

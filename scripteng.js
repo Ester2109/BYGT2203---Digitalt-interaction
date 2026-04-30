@@ -203,22 +203,52 @@ const contactAnswers = {
 };
 
 // Writes text letter by letter
+let activeTyping = null;
+
+// Skriver tekst bokstav for bokstav
 function typeMessage(element, text, speed = 35, callback = null) {
   if (!element) return;
 
+  // stopp eventuell tidligere typing
+  if (activeTyping) {
+    clearTimeout(activeTyping.timeout);
+    activeTyping = null;
+  }
+
   element.textContent = "";
   let i = 0;
+
+  activeTyping = {
+    element,
+    text,
+    timeout: null,
+    finish() {
+      clearTimeout(this.timeout);
+      element.textContent = text;
+
+      if (chatMessages) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      activeTyping = null;
+
+      if (callback) callback();
+    }
+  };
 
   function typing() {
     if (i < text.length) {
       element.textContent += text.charAt(i);
       i++;
+
       if (chatMessages) {
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
-      setTimeout(typing, speed);
-    } else if (callback) {
-      callback();
+
+      activeTyping.timeout = setTimeout(typing, speed);
+    } else {
+      activeTyping = null;
+      if (callback) callback();
     }
   }
 
@@ -284,6 +314,10 @@ function renderContactOptions() {
 
 // Handles general questions
 function handleQuestionClick(question) {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions) return;
 
   chatOptions.innerHTML = "";
@@ -324,10 +358,13 @@ function handleQuestionClick(question) {
 
 // Handles contact choices
 function handleContactClick(contact) {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions) return;
 
   chatOptions.innerHTML = "";
-
   const userMessage = createMessage("user-message");
   userMessage.textContent = contact;
   chatMessages.appendChild(userMessage);
@@ -376,6 +413,10 @@ function resetChat() {
 
 // Handles the finish button
 function handleDoneClick() {
+  if (activeTyping) {
+    activeTyping.finish();
+  }
+
   if (!chatMessages || !chatOptions || !chatBox) return;
 
   chatOptions.innerHTML = "";
@@ -428,9 +469,17 @@ function attachOptionListeners() {
 // Open/close chat
 if (chatBtn && chatBox && closeChat) {
   chatBtn.addEventListener("click", () => {
-    chatBox.classList.toggle("open");
+    // Hvis chatbotten allerede er åpen: lukk og reset
+    if (chatBox.classList.contains("open")) {
+      chatBox.classList.remove("open");
+      resetChat();
+      return;
+    }
 
-    if (chatBox.classList.contains("open") && !hasTypedWelcome) {
+    // Hvis chatbotten er lukket: åpne den
+    chatBox.classList.add("open");
+
+    if (!hasTypedWelcome) {
       const currentBotMessage = document.getElementById("botMessage");
 
       if (currentBotMessage) {
