@@ -473,9 +473,18 @@ function attachOptionListeners() {
 // Åpne/lukke chat
 if (chatBtn && chatBox && closeChat) {
   chatBtn.addEventListener("click", () => {
-    chatBox.classList.toggle("open");
+    // Hvis chatbotten allerede er åpen: lukk og restart
+    if (chatBox.classList.contains("open")) {
+      chatBox.classList.remove("open");
+      resetChat();
+      return;
+    }
 
-    if (chatBox.classList.contains("open") && !hasTypedWelcome) {
+    // Hvis chatbotten er lukket: åpne
+    chatBox.classList.add("open");
+
+    // Start velkomstmelding på nytt
+    if (!hasTypedWelcome) {
       const currentBotMessage = document.getElementById("botMessage");
 
       if (currentBotMessage) {
@@ -488,6 +497,7 @@ if (chatBtn && chatBox && closeChat) {
     }
   });
 
+  // Lukke-knapp
   closeChat.addEventListener("click", () => {
     chatBox.classList.remove("open");
     resetChat();
